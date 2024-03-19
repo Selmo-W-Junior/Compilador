@@ -5,8 +5,16 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -178,10 +186,16 @@ public class Interface extends JFrame {
 		
 		JButton btnCopiar = new JButton("Copiar (ctrl-c)");
 		btnCopiar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				copiado = textArea.getText();
-			}
-		});
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedText = textArea.getSelectedText();
+                if (selectedText != null && !selectedText.isEmpty()) {
+                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                    clipboard.setContents(new StringSelection(selectedText), null);
+                }
+            }
+        });
+		
 		// Definindo ação para Ctrl + C
         String actionKeyCrtlC = "ativarBotaoCrtlC";
         btnCopiar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
@@ -193,14 +207,25 @@ public class Interface extends JFrame {
             	btnCopiar.doClick();  
             }
         });	
+        
 		JButton btnColar = new JButton("Colar (ctrl-v)");
 		btnColar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!copiado.isBlank()) {
-					textArea.append(copiado);
-				}
-			}
-		});
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                Transferable contents = clipboard.getContents(null);
+                if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+                    try {
+                        String text = (String) contents.getTransferData(DataFlavor.stringFlavor);
+                        int caretPosition = textArea.getCaretPosition();
+                        textArea.insert(text, caretPosition);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+		
 		// Definindo ação para Ctrl + V
         String actionKeyCrtlV = "ativarBotaoCrtlV";
         btnColar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
@@ -214,12 +239,17 @@ public class Interface extends JFrame {
         });	
 		JButton btnRecortar = new JButton("Recortar (ctrl-r)");
 		btnRecortar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				copiado = textArea.getText();
-				textArea.setText("");
-				
-			}
-		});
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int start = textArea.getSelectionStart();
+                int end = textArea.getSelectionEnd();
+                if (start != end) {
+                    String text = textArea.getText();
+                    textArea.setText(text.substring(0, start) + text.substring(end));
+                }
+            }
+        });
+		
 		// Definindo ação para Ctrl + R
         String actionKeyCrtlR = "ativarBotaoCrtlR";
         btnRecortar.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
@@ -253,7 +283,7 @@ public class Interface extends JFrame {
 		JButton btnCompilar = new JButton("Compilar (F7)");
 		btnCompilar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				txtAreaMsg.append("compilação de programas ainda não foi implementada");
 			}
 		});
 		// Definindo ação para F7
