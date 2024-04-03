@@ -40,6 +40,7 @@ import javax.swing.KeyStroke;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 
 public class Interface extends JFrame {
 
@@ -65,7 +66,6 @@ public class Interface extends JFrame {
 
 	public Interface() {
 		setTitle("Compilador 1º Semestre 2024");
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(900, 600));
 		contentPane = new JPanel();
@@ -73,6 +73,8 @@ public class Interface extends JFrame {
 		setContentPane(contentPane);
 
 		JButton btnNovo = new JButton("Novo (ctrl-n)");
+		btnNovo.setIcon(new ImageIcon(codigoInterface.Interface.class.getResource("/imagens/btnNovo.png")));
+		btnNovo.setSelectedIcon(new ImageIcon(Interface.class.getResource("/imagens/btnNovo.png")));
 		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText("");
@@ -94,6 +96,7 @@ public class Interface extends JFrame {
         });		
 		
 		JButton btnAbrir = new JButton("Abrir (ctrl-o)");
+		btnAbrir.setIcon(new ImageIcon(Interface.class.getResource("/imagens/OpenFolder.png")));
 		btnAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
@@ -135,6 +138,7 @@ public class Interface extends JFrame {
         });	
 		
 		JButton btnSalvar = new JButton("Salvar (ctrl-s)");
+		btnSalvar.setIcon(new ImageIcon(Interface.class.getResource("/imagens/save.png")));
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
@@ -146,6 +150,7 @@ public class Interface extends JFrame {
 	                        BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile));
 	                        writer.write(textArea.getText());
 	                        writer.close();
+	                        
 	                    } catch (Exception ex) {
 	                        ex.printStackTrace();
 	                    }
@@ -169,6 +174,7 @@ public class Interface extends JFrame {
 	                    }
 	                }
 				}
+				txtAreaMsg.setText("");
 			}
 		});
 		
@@ -185,6 +191,7 @@ public class Interface extends JFrame {
         });	
 		
 		JButton btnCopiar = new JButton("Copiar (ctrl-c)");
+		btnCopiar.setIcon(new ImageIcon(Interface.class.getResource("/imagens/copy.png")));
 		btnCopiar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -209,6 +216,7 @@ public class Interface extends JFrame {
         });	
         
 		JButton btnColar = new JButton("Colar (ctrl-v)");
+		btnColar.setIcon(new ImageIcon(Interface.class.getResource("/imagens/paste.png")));
 		btnColar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -237,7 +245,8 @@ public class Interface extends JFrame {
             	btnColar.doClick();  
             }
         });	
-		JButton btnRecortar = new JButton("Recortar (ctrl-r)");
+		JButton btnRecortar = new JButton("Recortar (ctrl-x)");
+		btnRecortar.setIcon(new ImageIcon(Interface.class.getResource("/imagens/cut.png")));
 		btnRecortar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -262,6 +271,7 @@ public class Interface extends JFrame {
             }
         });	
 		JButton btnEquipe = new JButton("Equipe (F1)");
+		btnEquipe.setIcon(new ImageIcon(Interface.class.getResource("/imagens/group.png")));
 		btnEquipe.setToolTipText("F1");
 		btnEquipe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -281,9 +291,14 @@ public class Interface extends JFrame {
         });
         
 		JButton btnCompilar = new JButton("Compilar (F7)");
+		btnCompilar.setIcon(new ImageIcon(Interface.class.getResource("/imagens/play.png")));
 		btnCompilar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< Updated upstream
 				txtAreaMsg.append("compilação de programas ainda não foi implementada");
+=======
+				txtAreaMsg.append("Compilação de programas ainda não foi implementada.\n");
+>>>>>>> Stashed changes
 			}
 		});
 		// Definindo ação para F7
@@ -323,53 +338,60 @@ public class Interface extends JFrame {
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(txtpnNomeDoPrograma, GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(2)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btnNovo, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(btnAbrir, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(btnCopiar, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnColar, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnRecortar, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(btnCompilar, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(btnEquipe, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
-								.addComponent(splitPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE))))
-					.addGap(2))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNovo, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnAbrir, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnEquipe, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCompilar, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnRecortar, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnColar, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCopiar, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
-					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtpnNomeDoPrograma, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnColar, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnCopiar, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnAbrir, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNovo, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnEquipe, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnCompilar, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnRecortar, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtpnNomeDoPrograma, GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(2)
+							.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)))
+					.addContainerGap())
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(23)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnNovo, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnAbrir, GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSalvar, GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnCopiar, GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnColar, GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnRecortar, GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnCompilar, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnEquipe, GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+							.addGap(12))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(59)
+									.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(splitPane, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+									.addGap(8)))
+							.addComponent(txtpnNomeDoPrograma, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+					.addGap(21))
 		);
 
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 16));
