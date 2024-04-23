@@ -40,6 +40,7 @@ import javax.swing.KeyStroke;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.BadLocationException;
 import javax.swing.ImageIcon;
 
 public class Interface extends JFrame {
@@ -294,11 +295,10 @@ public class Interface extends JFrame {
 		btnCompilar.setIcon(new ImageIcon(Interface.class.getResource("/imagens/play.png")));
 		btnCompilar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< Updated upstream
-				txtAreaMsg.append("compilação de programas ainda não foi implementada");
-=======
-				txtAreaMsg.append("Compilação de programas ainda não foi implementada.\n");
->>>>>>> Stashed changes
+				txtAreaMsg.setText("");
+				CompilerController compile = new CompilerController();
+				
+				txtAreaMsg.append(compile.compilar(textArea.getText()));
 			}
 		});
 		// Definindo ação para F7
