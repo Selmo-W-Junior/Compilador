@@ -49,16 +49,17 @@ public class CompilerController {
 
     public String getClasse(int id, int posicao, String lexema) throws LexicalError {
         Map<Integer, String> classeMap = new HashMap<>();
-        //classeMap.put(2, "palavra_reservada");
-        classeMap.put(3, "identificador");
-        classeMap.put(4, "constante_int");
-        classeMap.put(5, "constante_float");
-        classeMap.put(6, "constante_bin");
-        classeMap.put(7, "constante_hexa");
-        classeMap.put(8, "constante_string");
-        classeMap.put(9, "comentario_linha");
-        classeMap.put(10, "comentario_bloco");
+       // classeMap.put(2, "palavra_reservada");
+        classeMap.put(2, "identificador");
+        classeMap.put(3, "constante_int");
+        classeMap.put(4, "constante_float");
+        classeMap.put(5, "constante_bin");
+        classeMap.put(6, "constante_hexa");
+        classeMap.put(7, "constante_string");
+        classeMap.put(8, "comentario_linha");
+        classeMap.put(9, "comentario_bloco");
         
+        classeMap.put(10, "palavra_reservada");
         classeMap.put(11, "palavra_reservada");
         classeMap.put(12, "palavra_reservada");
         classeMap.put(13, "palavra_reservada");
@@ -78,9 +79,9 @@ public class CompilerController {
         classeMap.put(27, "palavra_reservada");
         classeMap.put(28, "palavra_reservada");
         classeMap.put(29, "palavra_reservada");
-        classeMap.put(30, "palavra_reservada");
         
         
+        classeMap.put(30, "simbolo especial");
         classeMap.put(31, "simbolo especial");
         classeMap.put(32, "simbolo especial");
         classeMap.put(33, "simbolo especial");
@@ -98,8 +99,7 @@ public class CompilerController {
         classeMap.put(45, "simbolo especial");
         classeMap.put(46, "simbolo especial");
         classeMap.put(47, "simbolo especial");
-        classeMap.put(48, "simbolo especial");
         
-        return classeMap.getOrDefault(id, "simbolo desconhecido");
+        return classeMap.getOrDefault(id, " simbolo desconhecido");
     }
 }
