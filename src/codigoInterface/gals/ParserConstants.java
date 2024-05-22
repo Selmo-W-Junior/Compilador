@@ -1,4 +1,4 @@
-package codigoInterface.CompilerAssets.SemanticalCompiller;
+package codigoInterface.gals;
 
 public interface ParserConstants
 {
@@ -136,88 +136,88 @@ public interface ParserConstants
     String[] PARSER_ERROR =
     {
         "",
-        "Era esperado fim de programa",
-        "Era esperado identificador",
-        "Era esperado cint",
-        "Era esperado cfloat",
-        "Era esperado cbin",
-        "Era esperado chexa",
-        "Era esperado cstr",
-        "Era esperado comentario_de_linha",
-        "Era esperado comentario_de_bloco",
-        "Era esperado bin",
-        "Era esperado bool",
-        "Era esperado elif",
-        "Era esperado else",
-        "Era esperado endif",
-        "Era esperado false",
-        "Era esperado float",
-        "Era esperado hexa",
-        "Era esperado if",
-        "Era esperado int",
-        "Era esperado input",
-        "Era esperado main",
-        "Era esperado output",
-        "Era esperado str",
-        "Era esperado toInt",
-        "Era esperado toBin",
-        "Era esperado toHexa",
-        "Era esperado true",
-        "Era esperado repeat",
-        "Era esperado until",
-        "Era esperado \",\"",
-        "Era esperado \".\"",
-        "Era esperado \";\"",
-        "Era esperado \"=\"",
-        "Era esperado \":\"",
-        "Era esperado \"(\"",
-        "Era esperado \")\"",
-        "Era esperado \"&\"",
-        "Era esperado \"|\"",
-        "Era esperado \"!\"",
-        "Era esperado \"==\"",
-        "Era esperado \"!=\"",
-        "Era esperado \"<\"",
-        "Era esperado \">\"",
-        "Era esperado \"+\"",
-        "Era esperado \"-\"",
-        "Era esperado \"*\"",
-        "Era esperado \"/\"",
-        "<forma_geral_programa> inv�lido",
-        "<declaracao_variaveis> inv�lido",
-        "<lista_variaveis> inv�lido",
-        "<lista_id> inv�lido",
-        "<tipo> inv�lido",
-        "<valor> inv�lido",
-        "<comando_entrada_de_dados> inv�lido",
-        "<comando_saida_de_dados> inv�lido",
-        "<lista_expressoes> inv�lido",
-        "<comando_selecao> inv�lido",
-        "<comando_elif> inv�lido",
-        "<comando_else> inv�lido",
-        "<comando_repeticao> inv�lido",
-        "<comando_atribuicao> inv�lido",
-        "<comando> inv�lido",
-        "<lista_comandos> inv�lido",
-        "<lista_comando1> inv�lido",
-        "<lista_variavel1> inv�lido",
-        "<lista_variavel2> inv�lido",
-        "<identificador> inv�lido",
-        "<identificador1> inv�lido",
-        "<expressao> inv�lido",
-        "<expressao_> inv�lido",
-        "<expressao2> inv�lido",
-        "<elemento> inv�lido",
-        "<relacional> inv�lido",
-        "<relacional_> inv�lido",
-        "<operador_relacional> inv�lido",
-        "<aritmetica> inv�lido",
-        "<aritmetica_> inv�lido",
-        "<termo> inv�lido",
-        "<termo_> inv�lido",
-        "<fator> inv�lido",
-        "<membro> inv�lido",
-        "<membro_> inv�lido",
-        "<membro__> inv�lido"
+        "esperado EOF", //fim de programa
+        "esperado identificador", //identificador
+        "esperado constante_int", //cint
+        "esperado constante_float", //cfloat
+        "esperado constante_bin", //cbin
+        "esperado constante_hexa", //chexa
+        "esperado constante_str", //cstr
+        "esperado comentario_de_linha", //comentario_de_linha
+        "esperado comentario_de_bloco", //comentario_de_bloco
+        "esperado bin", //bin
+        "esperado bool", //bool
+        "esperado elif", //elif
+        "esperado else", //else
+        "esperado endif", //endif
+        "esperado false", //false
+        "esperado float", //float
+        "esperado hexa", //hexa
+        "esperado if", //if
+        "esperado int", //int
+        "esperado input", //input
+        "esperado main", //main
+        "esperado output", //output
+        "esperado str", //str
+        "esperado toInt", //toInt
+        "esperado toBin", //toBin
+        "esperado toHexa", //toHexa
+        "esperado true", //true
+        "esperado repeat", //repeat
+        "esperado until", //until
+        "esperado \",\"",
+        "esperado \".\"",
+        "esperado \";\"",
+        "esperado \"=\"",
+        "esperado \":\"",
+        "esperado \"(\"",
+        "esperado \")\"",
+        "esperado \"&\"",
+        "esperado \"|\"",
+        "esperado \"!\"",
+        "esperado \"==\"",
+        "esperado \"!=\"",
+        "esperado \"<\"",
+        "esperado \">\"",
+        "esperado \"+\"",
+        "esperado \"-\"",
+        "esperado \"*\"",
+        "esperado \"/\"",
+        "esperado main", //<forma_geral_programa>
+        "esperado variavel", //<declaracao_variaveis>
+        "esperado variavel", //<lista_variaveis>
+        "esperado identificador", //<lista_id>
+        "esperado int float bin hexa bool str", //<tipo>
+        "esperado constante_int constante_float constante_bin constante_hexa true false constante_string", //<valor>
+        "esperado input", //<comando_entrada_de_dados>
+        "esperado output", //<comando_saida_de_dados>
+        "esperado expressão", //<lista_expressoes>
+        "esperado if", //<comando_selecao>
+        "esperado elif", //<comando_elif>
+        "esperado else", //<comando_else>
+        "esperado repeat", //<comando_repeticao>
+        "esperado id", //<comando_atribuicao>
+        "<comando> inválido", //<comando>
+        "<lista_comandos> inválido", //<lista_comandos>
+        "<lista_comando1> inválido", //<lista_comando1>
+        "<lista_variavel1> inválido", //<lista_variavel1>
+        "<lista_variavel2> inválido", //<lista_variavel2>
+        "<identificador> inválido", //<identificador>
+        "esperado , : = )", //<identificador1>
+        "esperado expressão", //<expressao>
+        "esperado expressão", //<expressao_>
+        "<expressao2> inválido", //<expressao2>
+        "esperado expressão", //<elemento>
+        "esperado expressão", //<relacional>
+        "esperado expressão", //<relacional_>
+        "esperado == != < >", //<operador_relacional>
+        "esperado expressão", //<aritmetica>
+        "esperado expressão", //<aritmetica_>
+        "esperado expressão", //<termo>
+        "esperado expressão", //<termo_>
+        "esperado expressão", //<fator>
+        "esperado expressão", //<membro>
+        "esperado expressão", //<membro_>
+        "esperado expressão" //<membro__>
     };
 }

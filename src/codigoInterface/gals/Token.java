@@ -1,4 +1,5 @@
-package codigoInterface.CompilerAssets.SemanticalCompiller;
+package codigoInterface.gals;
+
 public class Token
 {
     private int id;

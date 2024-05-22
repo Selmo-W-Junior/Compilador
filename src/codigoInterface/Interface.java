@@ -297,7 +297,7 @@ public class Interface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				txtAreaMsg.setText("");
 				CompilerController compile = new CompilerController();
-				
+			
 				txtAreaMsg.append(compile.compilar(textArea.getText()));
 			}
 		});

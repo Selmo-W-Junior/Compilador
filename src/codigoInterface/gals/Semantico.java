@@ -1,4 +1,4 @@
-package codigoInterface.CompilerAssets.SemanticalCompiller;
+package codigoInterface.gals;
 
 public class Semantico implements Constants
 {

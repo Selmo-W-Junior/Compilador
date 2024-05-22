@@ -1,4 +1,4 @@
-package codigoInterface.CompilerAssets.SemanticalCompiller;
+package codigoInterface.gals;
 
 public interface Constants extends ScannerConstants, ParserConstants
 {

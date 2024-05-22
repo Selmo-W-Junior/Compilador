@@ -1,6 +1,6 @@
-package codigoInterface.CompilerAssets.SemanticalCompiller;
-import java.util.Stack;
+package codigoInterface.gals;
 
+import java.util.Stack;
 
 public class Sintatico implements Constants
 {
@@ -105,5 +105,15 @@ public class Sintatico implements Constants
 
         while ( ! step() )
             ;
+    }
+    
+    public String getToken() {
+//    	if (currentToken.getLexeme() == "$") {
+//    		return "EOF";
+//    	} else {
+//    		return currentToken.getLexeme();
+//    	}
+    	
+    	return currentToken.getLexeme();
     }
 }
