@@ -1,4 +1,4 @@
-package codigoInterface.CompilerAssets;
+package codigoInterface.gals;
 
 public class Lexico implements Constants
 {
@@ -26,31 +26,37 @@ public class Lexico implements Constants
         position = pos;
     }
 
-    public Token nextToken() throws LexicalError {
-        if (!hasInput())
+    public Token nextToken() throws LexicalError
+    {
+        if ( ! hasInput() )
             return null;
 
         int start = position;
+
         int state = 0;
         int lastState = 0;
         int endState = -1;
         int end = -1;
 
-        while (hasInput()) {
+        while (hasInput())
+        {
             lastState = state;
             state = nextState(nextChar(), state);
 
             if (state < 0)
                 break;
-            else {
-                if (tokenForState(state) >= 0) {
+
+            else
+            {
+                if (tokenForState(state) >= 0)
+                {
                     endState = state;
                     end = position;
                 }
             }
         }
         if (endState < 0 || (endState != state && tokenForState(lastState) == -2))
-            throw new LexicalError(SCANNER_ERROR[lastState], start, input.substring(start, position));
+            throw new LexicalError(SCANNER_ERROR[lastState], start);
 
         position = end;
 
@@ -58,13 +64,14 @@ public class Lexico implements Constants
 
         if (token == 0)
             return nextToken();
-        else {
+        else
+        {
             String lexeme = input.substring(start, end);
             token = lookupToken(token, lexeme);
             return new Token(token, lexeme, start);
         }
     }
-    
+
     private int nextState(char c, int state)
     {
         int start = SCANNER_TABLE_INDEXES[state];
@@ -77,9 +84,9 @@ public class Lexico implements Constants
             if (SCANNER_TABLE[half][0] == c)
                 return SCANNER_TABLE[half][1];
             else if (SCANNER_TABLE[half][0] < c)
-            	start = half + 1;
-            else //(SCANNER_TABLE[half][0] > c)
-                end = half - 1;
+                start = half+1;
+            else  //(SCANNER_TABLE[half][0] > c)
+                end = half-1;
         }
 
         return -1;
@@ -97,6 +104,8 @@ public class Lexico implements Constants
     {
         int start = SPECIAL_CASES_INDEXES[base];
         int end   = SPECIAL_CASES_INDEXES[base+1]-1;
+
+        key = key.toUpperCase();
 
         while (start <= end)
         {

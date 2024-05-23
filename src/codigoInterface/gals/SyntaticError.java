@@ -1,4 +1,4 @@
-package codigoInterface.CompilerAssets;
+package codigoInterface.gals;
 
 public class SyntaticError extends AnalysisError
 {

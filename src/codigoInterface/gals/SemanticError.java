@@ -1,4 +1,4 @@
-package codigoInterface.CompilerAssets;
+package codigoInterface.gals;
 
 public class SemanticError extends AnalysisError
 {
