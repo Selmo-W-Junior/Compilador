@@ -1,5 +1,7 @@
 package codigoInterface.gals;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class Sintatico implements Constants
@@ -108,12 +110,10 @@ public class Sintatico implements Constants
     }
     
     public String getToken() {
-//    	if (currentToken.getLexeme() == "$") {
-//    		return "EOF";
-//    	} else {
-//    		return currentToken.getLexeme();
-//    	}
-    	
-    	return currentToken.getLexeme();
+    	if (currentToken.getLexeme() == "$") {
+    		return "EOF";
+    	} else {
+    		return currentToken.getLexeme();
+    	}
     }
 }

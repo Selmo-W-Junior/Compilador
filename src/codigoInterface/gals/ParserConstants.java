@@ -183,9 +183,9 @@ public interface ParserConstants
         "esperado \"-\"",
         "esperado \"*\"",
         "esperado \"/\"",
-        "esperado main", //<forma_geral_programa>
-        "esperado variavel", //<declaracao_variaveis>
-        "esperado variavel", //<lista_variaveis>
+        "esperado identificador", //<forma_geral_programa>
+        "esperado identificador", //<declaracao_variaveis>
+        "esperado identificador", //<lista_variaveis>
         "esperado identificador", //<lista_id>
         "esperado int float bin hexa bool str", //<tipo>
         "esperado constante_int constante_float constante_bin constante_hexa true false constante_string", //<valor>
@@ -193,20 +193,20 @@ public interface ParserConstants
         "esperado output", //<comando_saida_de_dados>
         "esperado expressão", //<lista_expressoes>
         "esperado if", //<comando_selecao>
-        "esperado elif", //<comando_elif>
-        "esperado else", //<comando_else>
+        "esperado elif else endif", //<comando_elif>
+        "esperado else endif", //<comando_else>
         "esperado repeat", //<comando_repeticao>
-        "esperado id", //<comando_atribuicao>
-        "<comando> inválido", //<comando>
-        "<lista_comandos> inválido", //<lista_comandos>
-        "<lista_comando1> inválido", //<lista_comando1>
-        "<lista_variavel1> inválido", //<lista_variavel1>
-        "<lista_variavel2> inválido", //<lista_variavel2>
-        "<identificador> inválido", //<identificador>
+        "esperado identificador", //<comando_atribuicao>
+        "esperado identificador input output repeat", //<comando>
+        "esperado identificador input output repeat", //<lista_comandos>
+        "esperado identificador elif else endif if input output repeat until", //<lista_comando1>
+        "esperado ; =", //<lista_variavel1>
+        "esperado identificador main", //<lista_variavel2>
+        "esperado , identificador", //<identificador>
         "esperado , : = )", //<identificador1>
         "esperado expressão", //<expressao>
         "esperado expressão", //<expressao_>
-        "<expressao2> inválido", //<expressao2>
+        "esperado , )", //<expressao2>
         "esperado expressão", //<elemento>
         "esperado expressão", //<relacional>
         "esperado expressão", //<relacional_>
