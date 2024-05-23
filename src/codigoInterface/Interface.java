@@ -276,6 +276,7 @@ public class Interface extends JFrame {
 		btnEquipe.setToolTipText("F1");
 		btnEquipe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				txtAreaMsg.setText("");
 				txtAreaMsg.append("Iran Andrei Costa, Lucas Queiroz dos Reis e Selmo Werner Junior\n");
 			}
 		});
