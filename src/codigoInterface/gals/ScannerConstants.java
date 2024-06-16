@@ -5,57 +5,58 @@ public interface ScannerConstants
     int[] SCANNER_TABLE_INDEXES = 
     {
         0,
-        84,
-        84,
         85,
-        276,
-        278,
-        278,
-        278,
-        278,
-        278,
-        278,
-        278,
-        278,
-        278,
+        85,
+        86,
+        277,
+        279,
+        279,
+        279,
+        279,
+        279,
+        279,
+        279,
+        279,
         279,
         280,
-        291,
-        291,
-        291,
-        291,
+        281,
         292,
         292,
-        484,
-        547,
-        547,
-        547,
-        547,
-        549,
-        565,
-        757,
-        767,
-        777,
-        777,
-        840,
-        902,
-        904,
-        920,
+        292,
+        292,
+        293,
+        293,
+        485,
+        548,
+        548,
+        548,
+        548,
+        550,
+        566,
+        758,
+        768,
+        778,
+        778,
+        841,
+        903,
+        905,
         921,
-        931,
-        941,
-        1003,
-        1066,
-        1066,
-        1076,
-        1086,
-        1149
+        922,
+        932,
+        942,
+        1004,
+        1067,
+        1067,
+        1077,
+        1087,
+        1150
     };
 
     int[][] SCANNER_TABLE = 
     {
         {9, 1},
         {10, 1},
+        {13, 1},
         {32, 1},
         {33, 2},
         {34, 3},
@@ -1205,24 +1206,24 @@ public interface ScannerConstants
         {122, 44}
     };
 
-    int[] TOKEN_STATE = {-1,  0, 39, -1, -1, 37, 35, 36, 46, 44, 30, 45, 31, 47,  3,  3, 34, 32, 42, 33, 43,  8,  2, 38, 41,  7, -1, -1, -1, -1, -1, 40,  2,  2,  5,  6, -1,  4,  4,  2,  2,  9, -1, -1,  2 };
+    int[] TOKEN_STATE = {-2,  0, 37, -1, -1, 35, 33, 34, 44, 42, 28, 43, 29, 45,  3,  3, 32, 30, 40, 31, 41,  0,  2, 36, 39,  7, -1, -1, -2, -1, -1, 38,  2,  2,  5,  6, -2,  4,  4,  2,  2,  0, -1, -1,  2 };
 
     int[] SPECIAL_CASES_INDEXES =
-        { 0, 0, 0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 };
+        { 0, 0, 0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 };
 
     String[] SPECIAL_CASES_KEYS =
         {  "BIN", "BOOL", "ELIF", "ELSE", "ENDIF", "FALSE", "FLOAT", "HEXA", "IF", "INPUT", "INT", "MAIN", "OUTPUT", "REPEAT", "STR", "TOBIN", "TOHEXA", "TOINT", "TRUE", "UNTIL" };
 
     int[] SPECIAL_CASES_VALUES =
-        {  10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 19, 21, 22, 28, 23, 25, 26, 24, 27, 29 };
+        {  8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 17, 19, 20, 26, 21, 23, 24, 22, 25, 27 };
 
     String[] SCANNER_ERROR =
     {
-        "Caractere não esperado",
+        "símbolo inválido",
         "",
         "",
         "constante_str inválida",
-        "Erro identificando constante_bin ou constante_hexa",
+        "constante_bin ou constante_hexa inválida",
         "",
         "",
         "",
@@ -1246,7 +1247,7 @@ public interface ScannerConstants
         "",
         "constante_bin inválida",
         "constante_hexa inválida",
-        "comentario_de_bloco inválido",
+        "comentário de bloco inválido ou não finalizado",
         "constante_float inválida",
         "constante_float inválida",
         "",
@@ -1254,7 +1255,7 @@ public interface ScannerConstants
         "",
         "",
         "",
-        "comentario_de_bloco inválida",
+        "comentário de bloco inválido ou não finalizado",
         "",
         "",
         "",

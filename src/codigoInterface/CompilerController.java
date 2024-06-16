@@ -33,9 +33,22 @@ public class CompilerController {
 	}
 
 	private String tratarErroLexico(LexicalError e, String texto) {
-	    int linha = obterLinha(texto, e.getPosition());
-	    String lexema = e.getLexeme() != null ? e.getLexeme() + " " : " ";
-	    return String.format("Erro na linha %d - %s %s", linha, lexema, e.getMessage());
+//	    int linha = obterLinha(texto, e.getPosition());
+//	    char result = texto.charAt(e.getPosition());
+//	    String s = new String(new char[]{result});
+//	    e.setLexeme(s);
+//	    String lexema = e.getLexeme() != null ? e.getLexeme() + " " : " ";
+//	    return String.format("Erro na linha %d - %s %s", linha, lexema, e.getMessage());
+		int posicaoErro = e.getPosition();
+	    int linha = obterLinha(texto, posicaoErro);
+	    char result = texto.charAt(posicaoErro);
+	    
+	    String lexema = Character.toString(result);
+	    e.setLexeme(lexema);
+	    
+	    String mensagemErro = String.format("Erro na linha %d - %s %s", linha, lexema, e.getMessage());
+	    
+	    return mensagemErro;
 	}
 
 	private String tratarErroSintatico(SyntaticError e, String texto, Sintatico sintatico) {

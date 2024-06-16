@@ -1,0 +1,202 @@
+#Options
+GenerateScanner = true
+GenerateParser = true
+Language = Java
+ScannerName = Lexico
+ParserName = Sintatico
+SemanticName = Semantico
+ScannerCaseSensitive = false
+ScannerTable = Compact
+Input = Stream
+Parser = LL
+#RegularDefinitions
+letra: [a-z]|[A-Z]
+ocorrencia: {letra}|[0-9]
+#Tokens
+identificador: {letra}({ocorrencia}?)*|{letra}({ocorrencia}+ "_"?)*|{letra}"_"|{letra}("_"? {ocorrencia}+)* "_"?
+
+cint: 0|[1-9]([0-9])*
+
+cfloat: 0\.(0|[0-9]*[1-9])|[1-9][0-9]*\.(0|[0-9]*[1-9])
+
+cbin: #[b][0-1]+
+
+chexa: #[h]([0-9]|[a-f])+
+
+cstr: \"[^\n\\\"]*\"
+
+:! \?([^\n])*
+
+:! "/"\*[^\*"/"]*\*"/"
+
+
+// bin bool elif else endif false float hexa if
+//int input main output str toInt toBin toHexa true repeat until
+
+bin = identificador: "bin"
+bool = identificador: "bool"
+elif = identificador: "elif"
+else = identificador: "else"
+endif = identificador: "endif"
+false = identificador: "false"
+float = identificador: "float"
+hexa = identificador: "hexa"
+if = identificador: "if"
+int = identificador: "int"
+input = identificador: "input"
+main = identificador: "main"
+output = identificador: "output"
+str = identificador: "str"
+toInt = identificador: "toInt"
+toBin = identificador: "toBin"
+toHexa = identificador: "toHexa"
+true = identificador: "true"
+repeat = identificador: "repeat"
+until = identificador: "until"
+
+// s?mbolos especiais
+//  , . ; = : ( ) & | ! == != < > + - * /
+","
+"." 
+";" 
+"=" 
+":" 
+"(" 
+")" 
+"&" 
+"|" 
+"!" 
+"==" 
+"!=" 
+"<" 
+">" 
+"+" 
+"-"
+"*" 
+"/"  
+
+
+// reconhecer e ignorar caracteres
+:[\s\t\n\r]
+#NonTerminals
+<forma_geral_programa>
+<declaracao_variaveis>
+<lista_variaveis>
+<lista_id>
+<tipo>
+<valor>
+<comando_entrada_de_dados>
+<comando_saida_de_dados>
+<lista_expressoes>
+<comando_selecao>
+<comando_elif>
+<comando_else>
+<comando_repeticao>
+<comando_atribuicao>
+
+<comando>
+
+<lista_comandos>
+<lista_comando1>
+<lista_variavel1>
+<lista_variavel2>
+
+<identificador>
+<identificador1>
+
+<expressao>
+<expressao_>
+<expressao2>
+<elemento>
+<relacional>
+<relacional_>
+<operador_relacional>
+<aritmetica>
+<aritmetica_>
+<termo>
+<termo_>
+<fator>
+<membro>
+<membro_>
+<membro__>
+#Grammar
+<forma_geral_programa> ::= <declaracao_variaveis> main <lista_comandos>;
+
+<declaracao_variaveis> ::= <lista_variaveis> | î;
+
+<lista_comandos> ::= <comando>";"<lista_comando1>;
+<lista_comando1> ::= <lista_comandos> | î;
+
+<comando> ::= <comando_atribuicao> | <comando_entrada_de_dados> | <comando_saida_de_dados> | <comando_selecao> | <comando_repeticao>;
+
+<comando_atribuicao> ::= <lista_id> "=" <expressao>; 
+
+<lista_variaveis> ::= <lista_id> ":" <tipo> <lista_variavel1>;
+<lista_variavel1> ::= "=" <valor>";"<lista_variavel2>| ";"<lista_variavel2>;
+<lista_variavel2> ::= <lista_variaveis> | î;
+
+<lista_id> ::= identificador <identificador1>;
+<identificador1> ::= î | "," <lista_id>;
+
+<tipo> ::= int | float | bin | hexa | bool | str;
+
+<valor> ::= cint | cfloat | cbin | chexa | true | false | cstr;
+
+<comando_entrada_de_dados> ::= input"(" <lista_id> ")";
+
+<comando_saida_de_dados> ::= output "(" <lista_expressoes> ")";
+
+<lista_expressoes> ::=  <expressao> <expressao2>;
+<expressao2> ::= î | "," <lista_expressoes>;
+
+
+<comando_selecao> ::= if <expressao> ":" <lista_comandos> <comando_elif> <comando_else> endif;
+
+<comando_elif> ::=  elif <expressao> ":" <lista_comandos> <comando_elif> | î;
+
+<comando_else> ::= else <lista_comandos> | î;
+
+<comando_repeticao> ::= repeat <lista_comandos> until <expressao>;
+
+
+<expressao> ::= <elemento> <expressao_>;
+<expressao_> ::= î | "&" <elemento> <expressao_> | "|" <elemento> <expressao_>;
+
+<elemento> ::= <relacional> | true | false | "!" <elemento> ;
+
+<relacional> ::= <aritmetica> <relacional_> ;
+
+<relacional_> ::= î | <operador_relacional> <aritmetica> ;
+
+<operador_relacional> ::= "==" | "!=" | "<" | ">" ;
+
+<aritmetica> ::= <termo> <aritmetica_> ;
+
+<aritmetica_> ::= î | "+" <termo> <aritmetica_> | "-" <termo> <aritmetica_> ;
+
+<termo> ::= <fator> <termo_> ;
+
+<termo_> ::= î | "*" <fator> <termo_> | "/" <fator> <termo_> ;
+
+<fator> ::= <membro> <membro_>;
+
+<membro> ::= identificador | cint | cfloat | cbin | chexa | cstr | "(" <expressao> ")" | "+" <membro> | "-" <membro> ;
+<membro_> ::= î | "." <membro__> ;
+
+<membro__> ::= toInt | toBin | toHexa ; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
