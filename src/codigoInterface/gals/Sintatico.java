@@ -1,12 +1,10 @@
 package codigoInterface.gals;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 public class Sintatico implements Constants
 {
-    private Stack stack = new Stack();
+	private Stack stack = new Stack();
     private Token currentToken;
     private Token previousToken;
     private Lexico scanner;

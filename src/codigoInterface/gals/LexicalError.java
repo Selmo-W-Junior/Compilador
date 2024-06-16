@@ -20,4 +20,8 @@ public class LexicalError extends AnalysisError
     public String getLexeme() {
         return lexeme;
     }
+    
+    public void setLexeme(String lexeme) {
+    	this.lexeme = lexeme;
+    }
 }
