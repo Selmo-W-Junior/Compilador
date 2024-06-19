@@ -41,12 +41,13 @@ public class CompilerController {
 //	    return String.format("Erro na linha %d - %s %s", linha, lexema, e.getMessage());
 		int posicaoErro = e.getPosition();
 	    int linha = obterLinha(texto, posicaoErro);
-	    char result = texto.charAt(posicaoErro);
+	    char result = texto.charAt(posicaoErro); 
 	    
-	    String lexema = Character.toString(result);
+	    String lexema = (result == '#' || result == '/'|| result == '"') ? "" : Character.toString(result);
 	    e.setLexeme(lexema);
 	    
 	    String mensagemErro = String.format("Erro na linha %d - %s %s", linha, lexema, e.getMessage());
+	    
 	    
 	    return mensagemErro;
 	}
