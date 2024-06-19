@@ -97,7 +97,7 @@ public class Sintatico implements Constants
         this.scanner = scanner;
         this.semanticAnalyser = semanticAnalyser;
 
-        stack.clear();
+        stack.clear();	
         stack.push(new Integer(DOLLAR));
         stack.push(new Integer(START_SYMBOL));
 
@@ -107,7 +107,7 @@ public class Sintatico implements Constants
             ;
     }
     
-    public String getToken() {
+    public String getToken() { 
     	if (currentToken.getLexeme() == "$") {
     		return "EOF";
     	} else {

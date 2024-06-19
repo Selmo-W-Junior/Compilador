@@ -18,7 +18,7 @@ public class Token
         return id;
     }
 
-    public final String getLexeme()
+    public final String getLexeme() 
     {
         return lexeme;
     }
