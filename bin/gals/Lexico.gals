@@ -1,0 +1,77 @@
+#Options
+GenerateScanner = true
+GenerateParser = false
+Language = Java
+ScannerName = Lexico
+ScannerCaseSensitive = true
+ScannerTable = Compact
+Input = Stream
+#RegularDefinitions
+letra: [a-z]|[A-Z]
+ocorrencia: {letra}|[0-9]
+#Tokens
+identificador: {letra}({ocorrencia}?)*|{letra}({ocorrencia}+ "_"?)*|{letra}"_"|{letra}("_"? {ocorrencia}+)* "_"?
+
+cint: 0|[1-9]([0-9])*
+
+cfloat: 0\.(0|[0-9]*[1-9])|[1-9][0-9]*\.(0|[0-9]*[1-9])
+
+cbin: #[b][0-1]+
+
+chexa: #[h]([0-9]|[a-f])+
+
+cstr: \"[^\n\\\"]*\"
+
+:! \?([^\n])*
+
+:! "/"\*[^\*"/"]*\*"/"
+
+
+// bin bool elif else endif false float hexa if
+//int input main output str toInt toBin toHexa true repeat until
+
+bin = identificador: "bin"
+bool = identificador: "bool"
+elif = identificador: "elif"
+else = identificador: "else"
+endif = identificador: "endif"
+false = identificador: "false"
+float = identificador: "float"
+hexa = identificador: "hexa"
+if = identificador: "if"
+int = identificador: "int"
+input = identificador: "input"
+main = identificador: "main"
+output = identificador: "output"
+str = identificador: "str"
+toInt = identificador: "toInt"
+toBin = identificador: "toBin"
+toHexa = identificador: "toHexa"
+true = identificador: "true"
+repeat = identificador: "repeat"
+until = identificador: "until"
+
+// s?mbolos especiais
+//  , . ; = : ( ) & | ! == != < > + - * /
+","
+"." 
+";" 
+"=" 
+":" 
+"(" 
+")" 
+"&" 
+"|" 
+"!" 
+"==" 
+"!=" 
+"<" 
+">" 
+"+" 
+"-"
+"*" 
+"/"  
+
+
+// reconhecer e ignorar caracteres
+:[\s\t\n\r]
