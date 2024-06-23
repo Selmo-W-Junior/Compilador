@@ -211,7 +211,7 @@ public interface ParserConstants
         "esperado == != < >", //<operador_relacional>
         "esperado expressão", //<aritmetica>
         "esperado expressão", //<aritmetica_>
-        "esperado expressão", //<termo>
+        "esperado expressão", //<termo> 
         "esperado expressão", //<termo_>
         "esperado expressão", //<fator>
         "esperado expressão", //<membro>

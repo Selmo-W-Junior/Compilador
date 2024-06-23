@@ -23,10 +23,10 @@ public class CompilerController {
 	        resultado.append("programa compilado com sucesso");
 	    } catch (LexicalError e) {
 	        resultado.append(tratarErroLexico(e, texto));
-	    } catch (SyntaticError e) {
-	        resultado.append(tratarErroSintatico(e, texto, sintatico));
 	    } catch (SemanticError e) {
 	        resultado.append(tratarErroSemantico(e, texto));
+	    } catch (SyntaticError e) {
+	        resultado.append(tratarErroSintatico(e, texto, sintatico));
 	    }
 
 	    return resultado.toString();
@@ -54,7 +54,14 @@ public class CompilerController {
 
 	private String tratarErroSintatico(SyntaticError e, String texto, Sintatico sintatico) {
 	    int linha = obterLinha(texto, e.getPosition());
-	    return String.format("Erro na linha %d - encontrado %s %s", linha, sintatico.getToken(), e.getMessage());
+	    //Para corrigir caso seja String
+	    String token = sintatico.getToken();
+	    
+	    if (token.startsWith("\"") && token.endsWith("\"")) {
+	        token = "constante_str";
+	    }
+	    return String.format("Erro na linha %d - encontrado %s %s", linha, token, e.getMessage());
+	    //return String.format("Erro na linha %d - encontrado %s %s", linha, sintatico.getToken(), e.getMessage());
 	}
 
 	private String tratarErroSemantico(SemanticError e, String texto) {
